@@ -7,7 +7,7 @@ function App() {
     <>
       <div
         id="wrapper"
-        className="mx-auto flex min-h-screen max-w-[1024px] flex-col justify-center"
+        className="mx-auto flex min-h-screen max-w-[768px] flex-col justify-center bg-white md:px-4"
       >
         <Header />
         <Main />
