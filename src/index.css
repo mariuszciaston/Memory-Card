@@ -6,6 +6,8 @@
   font-family: "Press Start 2P", monospace, sans-serif;
 }
 
-/* img{
-  image-rendering: pixelated; 
-} */
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}

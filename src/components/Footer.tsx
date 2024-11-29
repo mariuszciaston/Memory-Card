@@ -11,7 +11,7 @@ const Footer = () => {
         <img
           src="./apple-touch-icon.png"
           alt="GitHub Logo"
-          className="hover:rotate-1turn h-[32px] min-h-[32px] w-[32px] min-w-[32px] transition-transform duration-500 ease-in-out hover:scale-125 hover:transform hover:opacity-100"
+          className="h-[32px] min-h-[32px] w-[32px] min-w-[32px] transition-transform duration-500 ease-in-out hover:rotate-1turn hover:scale-125 hover:transform hover:opacity-100"
         />
       </a>
     </footer>
