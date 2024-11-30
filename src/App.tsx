@@ -1,4 +1,3 @@
-import Info from "./components/Info";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
@@ -14,7 +13,6 @@ function App() {
         <Main />
         <Footer />
       </div>
-      <Info />
     </>
   );
 }
