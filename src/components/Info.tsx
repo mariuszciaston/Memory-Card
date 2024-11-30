@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 const Info = () => {
-  const [visible, setVisible] = useState(false);
-
-  const handleClick = () => {
-    setVisible(false);
-  };
+  const [visible, setVisible] = useState(true);
 
   if (!visible) return null;
 
@@ -21,7 +17,7 @@ const Info = () => {
         </p>
 
         <button
-          onClick={handleClick}
+          onClick={() => setVisible(false)}
           className="border-4 border-gray-500 bg-green-500 p-4 px-8 text-white hover:border-black"
           type="button"
         >

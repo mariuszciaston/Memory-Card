@@ -3,38 +3,13 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { Pokemon, StringArray } from "./components/types";
+import pokemonList from "./components/pokemonList";
+import { shuffleArray } from "./components/shuffleArray";
 
 function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedPokemonList, setClickedPokemonList] = useState<StringArray>([]);
-
-  const pokemonList = [
-    "charmander",
-    "charmeleon",
-    "charizard",
-
-    "bulbasaur",
-    "ivysaur",
-    "venusaur",
-
-    "squirtle",
-    "wartortle",
-    "blastoise",
-
-    "pikachu",
-    "jigglypuff",
-    "chansey",
-  ];
-
-  function shuffleArray(array: StringArray) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
   const [pokemonListOrder, setPokemonListOrder] = useState(
     shuffleArray(pokemonList),
   );

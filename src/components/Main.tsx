@@ -1,28 +1,10 @@
 import { useState, useEffect } from "react";
 import Info from "./Info";
-import { Endpoint, MainProps, Pokemon } from "./types";
+import { MainProps, Pokemon } from "./types";
+import getPokemon from "./getPokemon";
 
 const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
-
-  async function getPokemon(endpoint: Endpoint): Promise<Pokemon | void> {
-    const url = `https://pokeapi.co/api/v2/pokemon/${endpoint}`;
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-
-      const json: Pokemon = await response.json();
-      return json;
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-      } else {
-        console.error("An unknown error occurred");
-      }
-    }
-  }
 
   useEffect(() => {
     async function fetchAllPokemon() {
@@ -36,7 +18,23 @@ const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
   }, [shuffledPokemonList]);
 
   if (pokemonData.length === 0) {
-    return <div>Loading...</div>;
+    return (
+      <main className="relative grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 md:px-0">
+        <Info />
+
+        {shuffledPokemonList.map((name) => (
+          <div
+            key={name}
+            className="flex cursor-pointer flex-col border-4 border-gray-500 bg-gray-300 hover:border-black"
+          >
+            <div className="aspect-square w-full"></div>
+            <p className="flex flex-1 items-center justify-center pb-4 text-xs">
+              &nbsp;
+            </p>
+          </div>
+        ))}
+      </main>
+    );
   }
 
   return (
