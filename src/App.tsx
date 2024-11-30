@@ -48,7 +48,7 @@ function App() {
       setScore(0);
       setClickedPokemonList([]);
     }
-    setPokemonListOrder(shuffleArray(pokemonList));
+    setPokemonListOrder(shuffleArray([...pokemonList]));
   };
 
   return (
