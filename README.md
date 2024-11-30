@@ -1,8 +1,8 @@
-# Memory Card
+# PokeMemo
 
-Memory game built with Vite using React / Typescript / Tailwind
+Pokemon memory card game built with Vite using React / Typescript / Tailwind
 
 Work in progress...
 
-[Live Demo](https://memory-card-mariuszciaston.netlify.app/) :point_left: <br>
+[Live Demo](https://pokememo-mariuszciaston.netlify.app/) :point_left: <br>
 
