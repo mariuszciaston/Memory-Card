@@ -12,6 +12,7 @@ export interface Score {
   bestScore: number;
 }
 
-export interface HandleClickProp {
-  handleClick: (e: Pokemon["name"]) => void;
+export interface MainProps {
+  handleClick: (e: string) => void;
+  shuffledPokemonList: StringArray;
 }

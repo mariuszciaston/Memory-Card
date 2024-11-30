@@ -1,36 +1,8 @@
 import { useState, useEffect } from "react";
 import Info from "./Info";
-import { Endpoint, HandleClickProp, Pokemon, StringArray } from "./types";
+import { Endpoint, MainProps, Pokemon } from "./types";
 
-const pokemonList = [
-  "charmander",
-  "charmeleon",
-  "charizard",
-
-  "bulbasaur",
-  "ivysaur",
-  "venusaur",
-
-  "squirtle",
-  "wartortle",
-  "blastoise",
-
-  "pikachu",
-  "jigglypuff",
-  "chansey",
-];
-
-function shuffleArray(array: StringArray) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-}
-
-const shuffledPokemonList = shuffleArray(pokemonList);
-
-const Main: React.FC<HandleClickProp> = ({ handleClick }) => {
+const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
 
   async function getPokemon(endpoint: Endpoint): Promise<Pokemon | void> {
@@ -61,7 +33,7 @@ const Main: React.FC<HandleClickProp> = ({ handleClick }) => {
     }
 
     fetchAllPokemon();
-  }, []);
+  }, [shuffledPokemonList]);
 
   if (pokemonData.length === 0) {
     return <div>Loading...</div>;
