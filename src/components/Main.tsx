@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Info from "./Info";
-import { Endpoint, Pokemon } from "./types";
+import { Endpoint, Pokemon, StringArray } from "./types";
 
 const pokemonList = [
   "charmander",
@@ -19,6 +19,16 @@ const pokemonList = [
   "jigglypuff",
   "chansey",
 ];
+
+function shuffleArray(array: StringArray) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+const shuffledPokemonList = shuffleArray(pokemonList);
 
 const Main = () => {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
@@ -45,7 +55,7 @@ const Main = () => {
   useEffect(() => {
     async function fetchAllPokemon() {
       const allPokemonData = await Promise.all(
-        pokemonList.map((name) => getPokemon(name)),
+        shuffledPokemonList.map((name) => getPokemon(name)),
       );
       setPokemonData(allPokemonData.filter((data): data is Pokemon => !!data));
     }
