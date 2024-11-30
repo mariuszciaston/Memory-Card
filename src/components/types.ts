@@ -6,3 +6,12 @@ export interface Pokemon {
 }
 
 export type StringArray = string[];
+
+export interface Score {
+  score: number;
+  bestScore: number;
+}
+
+export interface HandleClickProp {
+  handleClick: (e: Pokemon["name"]) => void;
+}

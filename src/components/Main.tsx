@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Info from "./Info";
-import { Endpoint, Pokemon, StringArray } from "./types";
+import { Endpoint, HandleClickProp, Pokemon, StringArray } from "./types";
 
 const pokemonList = [
   "charmander",
@@ -30,7 +30,7 @@ function shuffleArray(array: StringArray) {
 
 const shuffledPokemonList = shuffleArray(pokemonList);
 
-const Main = () => {
+const Main: React.FC<HandleClickProp> = ({ handleClick }) => {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
 
   async function getPokemon(endpoint: Endpoint): Promise<Pokemon | void> {
@@ -75,6 +75,7 @@ const Main = () => {
         <div
           key={pokemon.name}
           className="flex cursor-pointer flex-col border-4 border-gray-500 bg-gray-300 hover:border-black"
+          onClick={() => handleClick(pokemon.name)}
         >
           <img
             src={pokemon.sprites.front_default}

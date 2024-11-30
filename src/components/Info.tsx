@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Info = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const handleClick = () => {
     setVisible(false);
