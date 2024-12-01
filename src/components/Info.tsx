@@ -1,7 +1,14 @@
 import { useState } from "react";
+import { playBattle, playClick } from "./sound";
 
 const Info = () => {
   const [visible, setVisible] = useState(true);
+
+  const handleClick = () => {
+    setVisible(false);
+    playClick();
+    playBattle();
+  };
 
   if (!visible) return null;
 
@@ -17,7 +24,7 @@ const Info = () => {
         </p>
 
         <button
-          onClick={() => setVisible(false)}
+          onClick={handleClick}
           className="border-4 border-gray-500 bg-green-500 p-4 px-8 text-white hover:border-black"
           type="button"
         >

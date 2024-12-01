@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import { Pokemon, StringArray } from "./components/types";
 import pokemonList from "./components/pokemonList";
 import { shuffleArray } from "./components/shuffleArray";
+import { playError, playFlip, playPoint } from "./components/sound";
 
 function App() {
   const [score, setScore] = useState(0);
@@ -13,17 +14,29 @@ function App() {
   const [pokemonListOrder, setPokemonListOrder] = useState(
     shuffleArray(pokemonList),
   );
+  const [isClickable, setIsClickable] = useState(true);
 
   const handleClick = (e: Pokemon["name"]) => {
+    if (!isClickable) return;
+    setIsClickable(false);
+
     if (!clickedPokemonList.includes(e)) {
+      playPoint();
       setClickedPokemonList([...clickedPokemonList, e]);
       setScore(score + 1);
       setBestScore(Math.max(score + 1, bestScore));
     } else {
+      playError();
       setScore(0);
       setClickedPokemonList([]);
     }
-    setPokemonListOrder(shuffleArray([...pokemonList]));
+
+    (async () => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      playFlip();
+      setPokemonListOrder(shuffleArray([...pokemonList]));
+      setIsClickable(true);
+    })();
   };
 
   return (

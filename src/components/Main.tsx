@@ -3,6 +3,7 @@ import Info from "./Info";
 import { MainProps, Pokemon } from "./types";
 import getPokemon from "./getPokemon";
 
+
 function extractFirstFrame(gifUrl: string): Promise<string> {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -88,7 +89,15 @@ const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
               "flex cursor-pointer flex-col overflow-hidden border-4 border-gray-500 bg-gray-300 hover:border-black"
             }
             onClick={() => handleClick(pokemon.name)}
-            onMouseEnter={() => setHoveredPokemon(pokemon.name)}
+            onMouseEnter={() => {
+              
+              setHoveredPokemon(pokemon.name)
+          
+            
+            }
+
+          }
+
             onMouseLeave={() => setHoveredPokemon(null)}
           >
             <img
