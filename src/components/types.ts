@@ -2,7 +2,19 @@ export type Endpoint = string;
 
 export interface Pokemon {
   name: string;
-  sprites: { front_default: string };
+  sprites: {
+    front_default: string;
+
+    versions: {
+      "generation-v": {
+        "black-white": {
+          animated: {
+            front_default: string;
+          };
+        };
+      };
+    };
+  };
 }
 
 export type StringArray = string[];
