@@ -96,12 +96,10 @@ const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
                 hoveredPokemon === pokemon.name
                   ? pokemon.sprites.versions["generation-v"]["black-white"]
                       .animated.front_default
-                  : staticImages[pokemon.name] ||
-                    pokemon.sprites.versions["generation-v"]["black-white"]
-                      .animated.front_default
+                  : staticImages[pokemon.name] || ""
               }
               alt={pokemon.name}
-              className={`aspect-square scale-[175%] object-scale-down ${pokemon.name === "charmander" ? "translate-x-[0%] translate-y-[2%]" : null} ${pokemon.name === "charmeleon" ? "translate-x-[8%] translate-y-[2%]" : null} ${pokemon.name === "charizard" ? "translate-x-[5%] translate-y-[-5%]" : null} ${pokemon.name === "bulbasaur" ? "translate-x-[-2%] translate-y-[-4%]" : null} ${pokemon.name === "ivysaur" ? "translate-x-[0%] translate-y-[0%]" : null} ${pokemon.name === "venusaur" ? "translate-x-[0%] translate-y-[0%]" : null} ${pokemon.name === "squirtle" ? "translate-x-[0%] translate-y-[-1%]" : null} ${pokemon.name === "wartortle" ? "translate-x-[2%] translate-y-[2%]" : null} ${pokemon.name === "blastoise" ? "translate-x-[-1%] translate-y-[-2%]" : null} ${pokemon.name === "pikachu" ? "translate-x-[3%] translate-y-[-2%]" : null} ${pokemon.name === "jigglypuff" ? "translate-x-[0%] translate-y-[-7%]" : null} ${pokemon.name === "chansey" ? "translate-x-[0%] translate-y-[0%]" : null} `}
+              className={`aspect-square scale-[175%] object-scale-down ${pokemon.name === "charmander" ? "translate-x-[0%] translate-y-[2%]" : ""} ${pokemon.name === "charmeleon" ? "translate-x-[8%] translate-y-[2%]" : ""} ${pokemon.name === "charizard" ? "translate-x-[5%] translate-y-[-5%]" : ""} ${pokemon.name === "bulbasaur" ? "translate-x-[-2%] translate-y-[-4%]" : ""} ${pokemon.name === "ivysaur" ? "translate-x-[0%] translate-y-[0%]" : ""} ${pokemon.name === "venusaur" ? "translate-x-[0%] translate-y-[0%]" : ""} ${pokemon.name === "squirtle" ? "translate-x-[0%] translate-y-[-1%]" : ""} ${pokemon.name === "wartortle" ? "translate-x-[2%] translate-y-[2%]" : ""} ${pokemon.name === "blastoise" ? "translate-x-[-1%] translate-y-[-2%]" : ""} ${pokemon.name === "pikachu" ? "translate-x-[3%] translate-y-[-2%]" : ""} ${pokemon.name === "jigglypuff" ? "translate-x-[0%] translate-y-[-7%]" : ""} ${pokemon.name === "chansey" ? "translate-x-[0%] translate-y-[0%]" : ""}`}
             />
 
             <p className="flex flex-1 items-center justify-center pb-4 text-xs">
