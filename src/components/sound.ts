@@ -20,10 +20,14 @@ export const pauseAudio = (audio: HTMLAudioElement) => {
 };
 
 export const playOpening = () => {
+  pauseAudio(openingAudio);
+  pauseAudio(battleAudio);
   openingAudio.play();
 };
 
 export const playBattle = () => {
+  pauseAudio(openingAudio);
+  pauseAudio(battleAudio);
   battleAudio.play();
 };
 

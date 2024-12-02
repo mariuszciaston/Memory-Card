@@ -4,8 +4,13 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import { Pokemon, StringArray } from "./components/types";
 import pokemonList from "./components/pokemonList";
-import { shuffleArray } from "./components/shuffleArray";
-import { playError, playFlip, playPoint } from "./components/sound";
+import shuffleArray from "./components/shuffleArray";
+import {
+  playError,
+  playFlip,
+  playOpening,
+  playPoint,
+} from "./components/sound";
 
 function App() {
   const [score, setScore] = useState(0);
@@ -15,6 +20,8 @@ function App() {
     shuffleArray(pokemonList),
   );
   const [isClickable, setIsClickable] = useState(true);
+
+  if (bestScore === 0) playOpening();
 
   const handleClick = (e: Pokemon["name"]) => {
     if (!isClickable) return;

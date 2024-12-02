@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { playBattle, playClick, stopBattle } from "./sound";
+import { playBattle, playClick, stopBattle, stopOpening } from "./sound";
 
 const Footer = () => {
   const [toggleMusic, setToggleMusic] = useState(true);
@@ -8,6 +8,7 @@ const Footer = () => {
     playClick();
     if (toggleMusic) {
       stopBattle();
+      stopOpening();
     } else {
       playBattle();
     }
@@ -16,7 +17,10 @@ const Footer = () => {
 
   return (
     <footer className="flex flex-wrap justify-between gap-4 bg-gray-300 p-4 text-xs md:p-8">
-      <button className="bg-white p-4" onClick={toggle}>
+      <button
+        className="border-4 border-gray-500 bg-white p-4 hover:border-black"
+        onClick={toggle}
+      >
         {toggleMusic ? "Stop Music" : "Play Music"}
       </button>
 
