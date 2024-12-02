@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Pokemon } from "../components/types";
 import getPokemon from "../components/getPokemon";
 import extractFirstFrame from "../components/extractFirstFrame";
+import pokemonList from "../components/pokemonList";
 
 export function usePokemonData(shuffledPokemonList: string[]) {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
@@ -10,7 +11,7 @@ export function usePokemonData(shuffledPokemonList: string[]) {
   useEffect(() => {
     async function fetchAllPokemon() {
       const allPokemonData = await Promise.all(
-        shuffledPokemonList.map((name) => getPokemon(name))
+        pokemonList.map((name) => getPokemon(name))
       );
 
       const filteredPokemonData = allPokemonData.filter(
@@ -37,7 +38,14 @@ export function usePokemonData(shuffledPokemonList: string[]) {
     }
 
     fetchAllPokemon();
-  }, [shuffledPokemonList]);
+  }, []);
 
-  return { pokemonData, staticImages };
+  const sortedPokemonData = useMemo(() => {
+    if (!pokemonData.length) return [];
+    return shuffledPokemonList
+      .map(name => pokemonData.find(p => p.name === name))
+      .filter((pokemon): pokemon is Pokemon => pokemon !== undefined);
+  }, [shuffledPokemonList, pokemonData]);
+
+  return { pokemonData: sortedPokemonData, staticImages };
 } 
