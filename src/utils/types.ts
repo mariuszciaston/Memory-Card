@@ -35,3 +35,7 @@ export interface PokemonCardProps {
   gifImage: string;
   onClick: (name: string) => void;
 }
+
+export type StaticImagesMapProp = { [key: string]: string };
+
+export type GifImagesMapProp = { [key: string]: string };
