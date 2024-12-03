@@ -9,7 +9,6 @@ export function usePokemonData(shuffledPokemonList: string[]) {
   const [staticImages, setStaticImages] = useState<{ [key: string]: string }>(
     {},
   );
-
   const [gifImages, setGifImages] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
@@ -67,7 +66,6 @@ export function usePokemonData(shuffledPokemonList: string[]) {
 
   return {
     pokemonData: sortedPokemonData,
-
     staticImages,
     gifImages,
   };
