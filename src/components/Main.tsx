@@ -1,5 +1,5 @@
 import Info from "./Info";
-import { MainProps } from "./types";
+import { MainProps } from "../utils/types";
 import PokemonCard from "./PokemonCard";
 import { usePokemonData } from "../hooks/usePokemonData";
 

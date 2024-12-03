@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
-import { Pokemon } from "../components/types";
-import getPokemon from "../components/getPokemon";
-import extractFirstFrame from "../components/extractFirstFrame";
-import pokemonList from "../components/pokemonList";
+import { Pokemon } from "../utils/types";
+import getPokemon from "../utils/getPokemon";
+import extractFirstFrame from "../utils/extractFirstFrame";
+import pokemonList from "../data/pokemonList";
 
 export function usePokemonData(shuffledPokemonList: string[]) {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);

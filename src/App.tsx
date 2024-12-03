@@ -2,15 +2,10 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { Pokemon, StringArray } from "./components/types";
-import pokemonList from "./components/pokemonList";
-import shuffleArray from "./components/shuffleArray";
-import {
-  playError,
-  playFlip,
-  playOpening,
-  playPoint,
-} from "./components/sound";
+import { Pokemon, StringArray } from "./utils/types";
+import pokemonList from "./data/pokemonList";
+import shuffleArray from "./utils/shuffleArray";
+import { playError, playFlip, playOpening, playPoint } from "./utils/sound";
 
 function App() {
   const [score, setScore] = useState(0);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { playBattle, playClick, stopBattle, stopOpening } from "./sound";
+import { playBattle, playClick, stopBattle, stopOpening } from "../utils/sound";
 
 const Footer = () => {
   const [toggleMusic, setToggleMusic] = useState(true);

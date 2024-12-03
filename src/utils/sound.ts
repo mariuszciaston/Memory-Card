@@ -1,14 +1,14 @@
-const openingAudio = new Audio("/sound/opening.mp3");
+const openingAudio = new Audio("/audio/opening.mp3");
 openingAudio.volume = 0.5;
 openingAudio.loop = true;
-const battleAudio = new Audio("/sound/battle.mp3");
+const battleAudio = new Audio("/audio/battle.mp3");
 battleAudio.volume = 0.5;
 battleAudio.loop = true;
 
-const clickAudio = new Audio("/sound/click.mp3");
-const pointAudio = new Audio("/sound/point.mp3");
-const flipAudio = new Audio("/sound/flip.mp3");
-const errorAudio = new Audio("/sound/error.mp3");
+const clickAudio = new Audio("/audio/click.mp3");
+const pointAudio = new Audio("/audio/point.mp3");
+const flipAudio = new Audio("/audio/flip.mp3");
+const errorAudio = new Audio("/audio/error.mp3");
 
 export const stopAudio = (audio: HTMLAudioElement) => {
   audio.pause();

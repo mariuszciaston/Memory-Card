@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { playBattle, playClick } from "./sound";
+import { playBattle, playClick } from "../utils/sound";
 
 const Info = () => {
   const [visible, setVisible] = useState(true);

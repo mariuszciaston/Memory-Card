@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PokemonCardProps } from "./types";
+import { PokemonCardProps } from "../utils/types";
 
 const POSITION_ADJUSTMENTS: Record<string, string> = {
   charmander: "translate-x-[0%] translate-y-[2%]",

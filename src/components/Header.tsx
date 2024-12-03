@@ -1,4 +1,4 @@
-import { Score } from "./types";
+import { Score } from "../utils/types";
 
 const Header: React.FC<Score> = ({ score, bestScore }) => {
   return (
