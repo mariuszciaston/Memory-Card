@@ -34,12 +34,21 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        src={isHovered ? gifImage : staticImage || ""}
+        src={gifImage}
         alt={pokemon.name}
-        className={`aspect-square scale-[175%] object-scale-down ${
+        className={`aspect-square scale-[175%] object-scale-down ${isHovered ? "visible" : "invisible absolute"} ${
           POSITION_ADJUSTMENTS[pokemon.name] || ""
         }`}
       />
+
+      <img
+        src={staticImage}
+        alt={pokemon.name}
+        className={`aspect-square scale-[175%] object-scale-down ${isHovered ? "invisible absolute" : "visible"} ${
+          POSITION_ADJUSTMENTS[pokemon.name] || ""
+        }`}
+      />
+
       <p className="flex flex-1 items-center justify-center pb-4 text-xs">
         {pokemon.name}
       </p>
