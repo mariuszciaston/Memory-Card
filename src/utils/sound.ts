@@ -9,6 +9,7 @@ const clickAudio = new Audio("/audio/click.mp3");
 const pointAudio = new Audio("/audio/point.mp3");
 const flipAudio = new Audio("/audio/flip.mp3");
 const errorAudio = new Audio("/audio/error.mp3");
+const victoryAudio = new Audio("/audio/victory.mp3");
 
 export const stopAudio = (audio: HTMLAudioElement) => {
   audio.pause();
@@ -56,4 +57,9 @@ export const playFlip = () => {
 export const playError = () => {
   stopAudio(errorAudio);
   errorAudio.play();
+};
+
+export const playVictory = () => {
+  stopAudio(victoryAudio);
+  victoryAudio.play();
 };

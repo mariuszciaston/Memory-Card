@@ -5,7 +5,15 @@ import Footer from "./components/Footer";
 import { Pokemon, StringArray } from "./utils/types";
 import pokemonList from "./data/pokemonList";
 import shuffleArray from "./utils/shuffleArray";
-import { playError, playFlip, playOpening, playPoint } from "./utils/sound";
+import {
+  playError,
+  playFlip,
+  playOpening,
+  playPoint,
+  playVictory,
+  stopBattle,
+  stopOpening,
+} from "./utils/sound";
 
 function App() {
   const [score, setScore] = useState(0);
@@ -17,6 +25,15 @@ function App() {
   const [isClickable, setIsClickable] = useState(true);
 
   if (bestScore === 0) playOpening();
+
+  if (bestScore === 12 && score === 12) {
+    stopOpening();
+    stopBattle();
+    playVictory();
+    playOpening();
+    setScore(0);
+    setClickedPokemonList([]);
+  }
 
   const handleClick = (e: Pokemon["name"]) => {
     if (!isClickable) return;
