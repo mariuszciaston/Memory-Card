@@ -32,5 +32,7 @@ export interface MainProps {
 export interface PokemonCardProps {
   pokemon: Pokemon;
   staticImage: string;
+  gifImage: string;
+
   onClick: (name: string) => void;
 }

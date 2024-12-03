@@ -19,6 +19,8 @@ const POSITION_ADJUSTMENTS: Record<string, string> = {
 const PokemonCard: React.FC<PokemonCardProps> = ({
   pokemon,
   staticImage,
+  gifImage,
+
   onClick,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -32,12 +34,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <img
-        src={
-          isHovered
-            ? pokemon.sprites.versions["generation-v"]["black-white"].animated
-                .front_default
-            : staticImage || ""
-        }
+        src={isHovered ? gifImage : staticImage || ""}
         alt={pokemon.name}
         className={`aspect-square scale-[175%] object-scale-down ${
           POSITION_ADJUSTMENTS[pokemon.name] || ""

@@ -4,21 +4,8 @@ import PokemonCard from "./PokemonCard";
 import { usePokemonData } from "../hooks/usePokemonData";
 
 const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
-  const { pokemonData, staticImages } = usePokemonData(shuffledPokemonList);
-
-  const preloadGifs = () => {
-    pokemonData.forEach((pokemon) => {
-      const gifUrl =
-        pokemon.sprites.versions["generation-v"]["black-white"].animated
-          .front_default;
-      const img = new Image();
-      img.src = gifUrl;
-    });
-  };
-
-  if (pokemonData.length > 0) {
-    preloadGifs();
-  }
+  const { pokemonData, gifImages, staticImages } =
+    usePokemonData(shuffledPokemonList);
 
   const mainLayout = (children: React.ReactNode) => (
     <main className="relative grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 md:px-0">
@@ -48,6 +35,7 @@ const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
       <PokemonCard
         key={pokemon.name}
         pokemon={pokemon}
+        gifImage={gifImages[pokemon.name]}
         staticImage={staticImages[pokemon.name]}
         onClick={handleClick}
       />
