@@ -23,6 +23,7 @@ function App() {
     shuffleArray(pokemonList),
   );
   const [isClickable, setIsClickable] = useState(true);
+  const [isFlipped, setIsFlipped] = useState(false);
 
   if (bestScore === 0) playOpening();
 
@@ -52,8 +53,12 @@ function App() {
 
     (async () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      playFlip();
+      setIsFlipped(true);
+      await new Promise((resolve) => setTimeout(resolve, 400));
       setPokemonListOrder(shuffleArray([...pokemonList]));
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      playFlip();
+      setIsFlipped(false);
       setIsClickable(true);
     })();
   };
@@ -64,7 +69,12 @@ function App() {
       className="mx-auto flex min-h-screen max-w-[768px] flex-col justify-center gap-4 bg-white md:px-4"
     >
       <Header score={score} bestScore={bestScore} />
-      <Main handleClick={handleClick} shuffledPokemonList={pokemonListOrder} />
+      <Main
+        handleClick={handleClick}
+        shuffledPokemonList={pokemonListOrder}
+        isFlipped={isFlipped}
+      />
+
       <Footer />
     </div>
   );

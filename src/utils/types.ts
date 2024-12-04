@@ -27,6 +27,7 @@ export interface Score {
 export interface MainProps {
   handleClick: (e: string) => void;
   shuffledPokemonList: StringArray;
+  isFlipped: boolean;
 }
 
 export interface PokemonCardProps {
@@ -34,6 +35,7 @@ export interface PokemonCardProps {
   staticImage: string;
   gifImage: string;
   onClick: (name: string) => void;
+  isFlipped: boolean;
 }
 
 export type StaticImagesMapProp = { [key: string]: string };

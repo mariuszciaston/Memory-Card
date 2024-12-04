@@ -3,7 +3,11 @@ import { MainProps } from "../utils/types";
 import PokemonCard from "./PokemonCard";
 import { usePokemonData } from "../hooks/usePokemonData";
 
-const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
+const Main: React.FC<MainProps> = ({
+  handleClick,
+  isFlipped,
+  shuffledPokemonList,
+}) => {
   const { pokemonData, gifImages, staticImages } =
     usePokemonData(shuffledPokemonList);
 
@@ -38,6 +42,7 @@ const Main: React.FC<MainProps> = ({ handleClick, shuffledPokemonList }) => {
         gifImage={gifImages[pokemon.name]}
         staticImage={staticImages[pokemon.name]}
         onClick={handleClick}
+        isFlipped={isFlipped}
       />
     )),
   );

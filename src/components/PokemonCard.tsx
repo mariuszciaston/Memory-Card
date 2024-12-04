@@ -20,38 +20,48 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
   pokemon,
   staticImage,
   gifImage,
-
   onClick,
+  isFlipped,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
       key={pokemon.name}
-      className="flex cursor-pointer flex-col overflow-hidden border-4 border-gray-500 bg-gray-300 hover:border-black"
-      onClick={() => onClick(pokemon.name)}
+      className="[perspective:4096px]"
+      onClick={() => {
+        onClick(pokemon.name);
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <img
-        src={gifImage}
-        alt={pokemon.name}
-        className={`aspect-square scale-[175%] object-scale-down ${isHovered ? "visible" : "invisible absolute"} ${
-          POSITION_ADJUSTMENTS[pokemon.name] || ""
+      <div
+        className={`relative h-full w-full duration-500 [transform-style:preserve-3d] ${
+          isFlipped ? "[transform:rotateY(180deg)]" : ""
         }`}
-      />
+      >
+        <div className="flex cursor-pointer flex-col overflow-hidden border-4 border-gray-500 bg-gray-300 hover:border-black">
+          <img
+            src={gifImage}
+            alt={pokemon.name}
+            className={`aspect-square scale-[175%] object-scale-down ${isHovered ? "visible" : "invisible absolute"} ${
+              POSITION_ADJUSTMENTS[pokemon.name] || ""
+            }`}
+          />
+          <img
+            src={staticImage}
+            alt={pokemon.name}
+            className={`aspect-square scale-[175%] object-scale-down ${isHovered ? "invisible absolute" : "visible"} ${
+              POSITION_ADJUSTMENTS[pokemon.name] || ""
+            }`}
+          />
+          <p className="flex flex-1 items-center justify-center pb-4 text-xs">
+            {pokemon.name}
+          </p>
+        </div>
 
-      <img
-        src={staticImage}
-        alt={pokemon.name}
-        className={`aspect-square scale-[175%] object-scale-down ${isHovered ? "invisible absolute" : "visible"} ${
-          POSITION_ADJUSTMENTS[pokemon.name] || ""
-        }`}
-      />
-
-      <p className="flex flex-1 items-center justify-center pb-4 text-xs">
-        {pokemon.name}
-      </p>
+        <div className="absolute inset-0 flex cursor-default flex-col items-center justify-center overflow-hidden border-4 border-gray-500 bg-gray-300 [backface-visibility:hidden] [transform:rotateY(180deg)]"></div>
+      </div>
     </div>
   );
 };
