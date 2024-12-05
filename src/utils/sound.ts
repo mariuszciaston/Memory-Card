@@ -16,9 +16,7 @@ export const stopAudio = (audio: HTMLAudioElement) => {
   audio.currentTime = 0;
 };
 
-export const pauseAudio = (audio: HTMLAudioElement) => {
-  audio.pause();
-};
+export const pauseAudio = (audio: HTMLAudioElement) => audio.pause();
 
 export const playOpening = () => {
   pauseAudio(openingAudio);
@@ -32,13 +30,9 @@ export const playBattle = () => {
   battleAudio.play();
 };
 
-export const stopOpening = () => {
-  pauseAudio(openingAudio);
-};
+export const stopOpening = () => pauseAudio(openingAudio);
 
-export const stopBattle = () => {
-  pauseAudio(battleAudio);
-};
+export const stopBattle = () => pauseAudio(battleAudio);
 
 export const playClick = () => {
   stopAudio(clickAudio);

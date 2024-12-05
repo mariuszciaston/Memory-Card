@@ -2,15 +2,15 @@ import { useState } from "react";
 import { playBattle, playClick } from "../utils/sound";
 
 const Info = () => {
-  const [visible, setVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
 
   const handleClick = () => {
-    setVisible(false);
+    setIsVisible(false);
     playClick();
     playBattle();
   };
 
-  if (!visible) return null;
+  if (!isVisible) return null;
 
   return (
     <div

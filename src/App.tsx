@@ -36,31 +36,33 @@ function App() {
     setClickedPokemonList([]);
   }
 
-  const handleClick = (e: Pokemon["name"]) => {
+  const handleClick = async (pokemonName: Pokemon["name"]) => {
     if (!isClickable) return;
-    setIsClickable(false);
 
-    if (!clickedPokemonList.includes(e)) {
+    setIsClickable(false);
+    if (!clickedPokemonList.includes(pokemonName)) {
       playPoint();
-      setClickedPokemonList([...clickedPokemonList, e]);
-      setScore(score + 1);
-      setBestScore(Math.max(score + 1, bestScore));
+      setClickedPokemonList([...clickedPokemonList, pokemonName]);
+      setScore((prevScore) => prevScore + 1);
+      setBestScore((prevBestScore) => Math.max(prevBestScore, score + 1));
     } else {
       playError();
       setScore(0);
       setClickedPokemonList([]);
     }
 
-    (async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setIsFlipped(true);
-      await new Promise((resolve) => setTimeout(resolve, 400));
-      setPokemonListOrder(shuffleArray([...pokemonList]));
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      playFlip();
-      setIsFlipped(false);
-      setIsClickable(true);
-    })();
+    await handleCardFlip();
+    setIsClickable(true);
+  };
+
+  const handleCardFlip = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsFlipped(true);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    setPokemonListOrder(shuffleArray([...pokemonList]));
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    playFlip();
+    setIsFlipped(false);
   };
 
   return (
@@ -74,7 +76,6 @@ function App() {
         shuffledPokemonList={pokemonListOrder}
         isFlipped={isFlipped}
       />
-
       <Footer />
     </div>
   );

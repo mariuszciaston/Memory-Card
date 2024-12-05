@@ -11,30 +11,20 @@ const Main: React.FC<MainProps> = ({
   const { pokemonData, gifImages, staticImages } =
     usePokemonData(shuffledPokemonList);
 
-  const mainLayout = (children: React.ReactNode) => (
-    <main className="relative grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 md:px-0">
-      {children}
-      <Info />
-    </main>
-  );
+  const renderEmptyCards = (pokemonList: typeof shuffledPokemonList) =>
+    pokemonList.map((name) => (
+      <div
+        key={name}
+        className="flex flex-col border-4 border-gray-500 bg-gray-300"
+      >
+        <div className="aspect-square w-full"></div>
+        <p className="flex flex-1 items-center justify-center pb-4 text-xs">
+          &nbsp;
+        </p>
+      </div>
+    ));
 
-  if (pokemonData.length === 0) {
-    return mainLayout(
-      shuffledPokemonList.map((name) => (
-        <div
-          key={name}
-          className="flex cursor-pointer flex-col border-4 border-gray-500 bg-gray-300 hover:border-black"
-        >
-          <div className="aspect-square w-full"></div>
-          <p className="flex flex-1 items-center justify-center pb-4 text-xs">
-            &nbsp;
-          </p>
-        </div>
-      )),
-    );
-  }
-
-  return mainLayout(
+  const renderPokemonCards = () =>
     pokemonData.map((pokemon) => (
       <PokemonCard
         key={pokemon.name}
@@ -44,8 +34,18 @@ const Main: React.FC<MainProps> = ({
         onClick={handleClick}
         isFlipped={isFlipped}
       />
-    )),
+    ));
+
+  const mainLayout = (children: React.ReactNode) => (
+    <main className="relative grid grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4 md:px-0">
+      {children}
+      <Info />
+    </main>
   );
+
+  return pokemonData.length === 0
+    ? mainLayout(renderEmptyCards(shuffledPokemonList))
+    : mainLayout(renderPokemonCards());
 };
 
 export default Main;

@@ -25,6 +25,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const imageClass = (isGif: boolean) =>
+    `aspect-square scale-[175%] object-scale-down ${isHovered === isGif ? "visible" : "invisible absolute"} ${
+      POSITION_ADJUSTMENTS[pokemon.name] || ""
+    }`;
+
   return (
     <div
       key={pokemon.name}
@@ -41,19 +46,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
         }`}
       >
         <div className="flex cursor-pointer flex-col overflow-hidden border-4 border-gray-500 bg-gray-300 hover:border-black">
-          <img
-            src={gifImage}
-            alt={pokemon.name}
-            className={`aspect-square scale-[175%] object-scale-down ${isHovered ? "visible" : "invisible absolute"} ${
-              POSITION_ADJUSTMENTS[pokemon.name] || ""
-            }`}
-          />
+          <img src={gifImage} alt={pokemon.name} className={imageClass(true)} />
           <img
             src={staticImage}
             alt={pokemon.name}
-            className={`aspect-square scale-[175%] object-scale-down ${isHovered ? "invisible absolute" : "visible"} ${
-              POSITION_ADJUSTMENTS[pokemon.name] || ""
-            }`}
+            className={imageClass(false)}
           />
           <p className="flex flex-1 items-center justify-center pb-4 text-xs">
             {pokemon.name}
